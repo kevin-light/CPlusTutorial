@@ -1,0 +1,5 @@
+﻿  ft1.cpp
+D:\FF\learning\CPP\dtproj\ltd1\dtp7项目算法\utils.h(15,19): warning C4244: “return”: 从“double”转换到“int”，可能丢失数据
+  (编译源文件“ft1.cpp”)
+  
+  dtp7项目算法.vcxproj -> D:\FF\learning\CPP\dtproj\ltd1\x64\Debug\dtp7项目算法.exe

@@ -1,0 +1,5 @@
+﻿  big_sum-1.cpp
+D:\FF\learning\CPP\dtproj\ltd1\stp7t1\big_sum-1.cpp(14,9): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\FF\learning\CPP\dtproj\ltd1\stp7t1\big_sum-1.cpp(15,9): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\FF\learning\CPP\dtproj\ltd1\stp7t1\big_sum-1.cpp(36,15): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  stp7t1.vcxproj -> D:\FF\learning\CPP\dtproj\ltd1\x64\Debug\dtp6符合数据类型s.exe

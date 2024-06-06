@@ -1,0 +1,6 @@
+﻿  varable.cpp
+D:\FF\learning\CPP\dtproj\ltd1\dtp3变量\varable.cpp(50,9): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\FF\learning\CPP\dtproj\ltd1\dtp3变量\varable.cpp(54,20): warning C4305: “初始化”: 从“int”到“unsigned short”截断
+D:\FF\learning\CPP\dtproj\ltd1\dtp3变量\varable.cpp(54,22): warning C4309: “初始化”: 截断常量值
+D:\FF\learning\CPP\dtproj\ltd1\dtp3变量\varable.cpp(56,13): warning C4309: “初始化”: 截断常量值
+  dtp3变量.vcxproj -> D:\FF\learning\CPP\dtproj\ltd1\x64\Debug\dtp3变量.exe
