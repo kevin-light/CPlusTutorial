@@ -16,10 +16,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ../qtd_wind_event/mylabel.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    ../qtd_wind_event/mylabel.h \
     mainwindow.h
 
 FORMS += \
