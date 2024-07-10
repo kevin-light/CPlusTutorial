@@ -16,14 +16,24 @@
   <widget class="MyLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>80</y>
+     <x>60</x>
+     <y>400</y>
      <width>401</width>
      <height>241</height>
     </rect>
    </property>
    <property name="text">
     <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>40</y>
+     <width>271</width>
+     <height>111</height>
+    </rect>
    </property>
   </widget>
  </widget>

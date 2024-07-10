@@ -10,6 +10,8 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    edit = new QTextEdit();
+    edit->setFixedSize(600,200);
 }
 
 Widget::~Widget()
@@ -46,6 +48,7 @@ bool Widget::event(QEvent *event)
         }
     }
     return QWidget::event(event);
+//    return false; // edit编辑输入框不能输入
 
 }
 

@@ -2,6 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QTextEdit>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -23,5 +24,6 @@ protected:
 
 private:
     Ui::Widget *ui;
+    QTextEdit * edit;
 };
 #endif // WIDGET_H

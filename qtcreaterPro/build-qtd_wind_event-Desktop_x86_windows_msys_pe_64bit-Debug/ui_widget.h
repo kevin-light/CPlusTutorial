@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 #include <mylabel.h>
 
@@ -20,6 +21,7 @@ class Ui_Widget
 {
 public:
     MyLabel *label;
+    QTextEdit *textEdit;
 
     void setupUi(QWidget *Widget)
     {
@@ -28,7 +30,10 @@ public:
         Widget->resize(800, 600);
         label = new MyLabel(Widget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(180, 80, 401, 241));
+        label->setGeometry(QRect(60, 400, 401, 241));
+        textEdit = new QTextEdit(Widget);
+        textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        textEdit->setGeometry(QRect(40, 40, 271, 111));
 
         retranslateUi(Widget);
 

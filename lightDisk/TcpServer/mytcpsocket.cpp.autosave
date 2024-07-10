@@ -1,0 +1,76 @@
+#include "mytcpsocket.h"
+#include <QDebug>
+
+MyTcpSocket::MyTcpSocket()
+{
+    connect(this, SIGNAL(readyRead()),this,SLOT(recvMsg()));
+    
+    connect(this,SIGNAL(disconnected()), this,SLOT(clientOffline()));  // 收到disconnected信号，执行clientOffline下线
+}
+
+QString MyTcpSocket::getName()
+{
+    return m_strName;
+}
+
+void MyTcpSocket::recvMsg(){
+    qDebug() << this->bytesAvailable();
+    uint uiPDULen = 0;
+    this->read((char*)&uiPDULen,sizeof (uint));
+    uint uiMsgLen = uiPDULen-sizeof(PDU);
+    PDU *pdu = mkPDU(uiMsgLen);
+    this->read((char*)pdu+sizeof(uint),uiPDULen-sizeof (uint));
+//    qDebug() << "pdu char---->"<< pdu->uiMsgType << (char*)(pdu->caMsg);
+    switch (pdu->uiMsgType)
+       {
+       case ENUM_MSG_TYPE_REGISTER_REQUEST:
+       {
+        char caName[32] = {'\0'}; // C语言的写法
+        char caPwd[32] = {'\0'};
+        strncpy(caName, pdu->caData,32);
+        strncpy(caPwd, pdu->caData+32,32);
+        qDebug() << "capdu--->" << caName << caPwd <<pdu->uiMsgType;
+        bool ret = OpeDB::getInstance().handleRegist(caName,caPwd);
+        PDU *respdu = mkPDU(0);
+        respdu->uiMsgType= ENUM_MSG_TYPE_REGISTER_RESPOND;
+        if(ret){
+            strcpy(respdu->caData, REGIST_OK);
+        }
+        else {
+            strcpy(respdu->caData, REGIST_FAILED);
+        }
+        write((char*)respdu,respdu->uiPDULen);
+        free(respdu);
+        respdu=nullptr;
+        break;
+    }
+    case ENUM_MSG_TYPE_LOGIN_REQUEST:
+    {
+        char caName[32]={'\0'};
+        char pwd[32]={'\0'};
+        strncpy(caName, pdu->caData,32);
+        strncpy(pwd,pdu->caData+32,32);
+        bool ret = OpeDB::getInstance().handleLogin(caName,pwd);
+        PDU *respdu = mkPDU(0);
+        respdu->uiMsgType = ENUM_MSG_TYPE_LOGIN_RESPOND;
+        if (ret){
+            strcpy(respdu->caData, LOGIN_OK);
+            m_strName = caName;  // private的成员函数；
+        }
+        else {
+            strcpy(respdu->caData, LOGIN_FAILED);
+        }
+        write((char*)respdu, respdu->uiPDULen);
+        free(respdu);
+        respdu = NULL;
+        break;
+    }
+
+    }
+}
+
+void MyTcpSocket::clientOffline()
+{
+    OpeDB::getInstance().handleOffline(m_strName.toStdString().c_str());
+    emit offline(this);
+}
